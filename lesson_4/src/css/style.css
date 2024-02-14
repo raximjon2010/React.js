@@ -1,0 +1,150 @@
+body {
+  background-color: cyan;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.container_table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.head {
+  background-color: white;
+  height: 60px;
+  color: white;
+  top: 0px;
+  position: sticky;
+}
+
+.table {
+  width: 1000px;
+  border-spacing: 2px;
+  background: white;
+  border-radius: 8px;
+  border: 5px solid green;
+}
+
+.deleteButton {
+  height: 30px;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid gray;
+  background-color: red;
+  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.5%;
+}
+
+.deleteButton span {
+  background-color: rgb(150, 0, 0);
+}
+
+.navbar {
+  width: 90%;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid red;
+  background: red;
+  border-radius: 5px;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  color: white;
+}
+
+.search_input {
+  width: 300px;
+  height: 30px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid white;
+  background: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.5%;
+}
+
+.search_input::-moz-placeholder {
+  color: white;
+}
+
+.search_input::placeholder {
+  color: white;
+}
+
+.search_navbar {
+  display: flex;
+  gap: 15px;
+}
+
+.select {
+  width: 70px;
+  height: 30px;
+  background-color: red;
+  color: white;
+  border: 2px solid white;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.5%;
+}
+
+.create_navbar {
+  display: flex;
+  gap: 7px;
+}
+
+.input {
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid white;
+  color: wheat;
+  background: red;
+  outline: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.5%;
+}
+
+.input::-moz-placeholder {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.5%;
+  color: white;
+}
+
+.input::placeholder {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.5%;
+  color: white;
+}
+
+.Button {
+  width: 50px;
+  height: 30px;
+  border: 1px solid white;
+  background: red;
+  color: wheat;
+  border-radius: 5px;
+  outline: none;
+}/*# sourceMappingURL=style.css.map */
