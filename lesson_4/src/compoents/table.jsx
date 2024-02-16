@@ -8,7 +8,16 @@ const NameImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFYKmHT
 const Status = 'https://cdn-icons-png.flaticon.com/512/4534/4534613.png'
 const DeleteIcon = 'https://w7.pngwing.com/pngs/223/552/png-transparent-delete-logo-button-icon-delete-button-love-image-file-formats-text-thumbnail.png'
 const UpdateIcon = 'https://previews.123rf.com/images/faysalfarhan/faysalfarhan1711/faysalfarhan171119673/89598010-update-refresh-icon-isolated-on-green-round-button-abstract-illustration.jpg'
+const trueIcon = 'https://cdn-icons-png.freepik.com/256/929/929440.png'
 
+
+function* IdGenerator() {
+    let count = data.length;
+    while(true) {
+        yield ++count
+    }
+}
+const id = IdGenerator()
 class Table extends React.Component {
 constructor(props) {
     super(props);
@@ -20,6 +29,8 @@ constructor(props) {
         status:'',
         adress:'',
         age:'',
+
+        selected: null,
     };
 }
 
@@ -38,15 +49,44 @@ render() {
             this.setState({select: e.target.value})
         }
 
+        const getData = (e) => {
+            const {name, value} = e.target;
+            this.setState({[name] : value})
+        }
+        const onAdd = () => {
+            let data = {
+                id: id.next().value,
+                age: this.state.age,
+                adress: this.state.adress,
+                name: this.state.name,
+                status: this.state.status,
+            }
+            this.setState({list: [...this.state.list,data]})
+            this.setState({name : '', age: '', adress: '', status: ''})
+        }
+
+        const setSelect = (value) => {
+            if (!this.state.selected) {
+                this.setState({selected: value})
+            }
+            else{
+               let res = this.state.list.map((value) => {
+                    return value.id === this.state.selected.id 
+                    ? this.state.selected : value
+                })
+                this.setState({list: res, selected: null})
+            }
+
+        }
         return (
         <div style={{display: 'flex',alignItems:'center', flexDirection:'column'}}>
-           <div className="navbar">
+           <div className="navbar"> 
             <div className="create_navbar">
-                <input onChange={Adding} className='input' placeholder='Name' name = {'name'} type="text" />
-                <input onChange={Adding} className='input' placeholder='Status' name='status' type="text" />
-                <input onChange={Adding} className='input' placeholder='Address' name='address' type="text" />
-                <input onChange={Adding} className='input' placeholder='Age' name='age' type="text" />
-                <button onChange={Adding} className='Button'>Add</button>
+                <input onChange = {getData} className='input' placeholder='Name' name = {'name'} type="text" />
+                <input onChange = {getData} className='input' placeholder='Status' name='status' type="text" />
+                <input onChange = {getData} className='input' placeholder='Address' name='adress' type="text" />
+                <input onChange = {getData} className='input' placeholder='Age' name='age' type="text" />
+                <button onClick={onAdd}  className='Button'>Add</button>
             </div>
             <div className="search_navbar">
                 <select className='select' onChange={onSelect}>
@@ -67,14 +107,14 @@ render() {
                         this.state.list.length ?
                         this.state.list.map((value) => {
                             return (
-                                <tr>
+                                <tr key={value.id}>
                                     <th>{value.id}</th>
                                     <th>{value.age}</th>
-                                    <th>{value.adress}</th>
-                                    <th>{value.name}</th>
-                                    <th>{value.status}</th>
+                                    <th>{this.state.selected?.id === value.id ? <input className='input1' onChange={({target}) => this.setState({selected : {...this.state.selected, adress: target.value}})} defaultValue={this.state.selected?.adress} /> : value.adress}</th>
+                                    <th>{this.state.selected?.id === value.id ? <input className='input1' onChange={({target}) => this.setState({selected:{...this.state.selected, name: target.value}})} defaultValue={this.state.selected?.name} type="text" />: value.name}</th>
+                                    <th>{this.state.selected?.id === value.id ? <input className='input1' onChange={({target}) => this.setState({selected: {...this.state.selected, status: target.value }})} defaultValue={this.state.selected?.status}/> : value.status}</th>
                                     <th><button onClick={() => onDelete(value.id)} className='deleteButton'>DELETE</button></th>
-                                    <th><button><img width={'30px'} height={'30px'} style={{borderRadius: '50%'}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJK7fM8zkJ63XqpDmV3iGI1kbLaipS3dAyDA&usqp=CAU" alt="" /></button></th>
+                                    <th><button onClick={() => setSelect(value)}><img width={'30px'} height={'30px'} style={{borderRadius: '50%'}} src={this.state.selected?.id === value.id ? trueIcon : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJK7fM8zkJ63XqpDmV3iGI1kbLaipS3dAyDA&usqp=CAU'} alt="" /></button></th>
                                     </tr>
                             )
                         })
@@ -87,6 +127,7 @@ render() {
                     </tr>
                     }
                 </tbody>
+
                 <thead className='head'>
                     <tr>
                          <th><img width={'50px'} height={'50px'} src={idImage} alt="Eror" /></th>

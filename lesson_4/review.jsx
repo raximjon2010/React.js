@@ -1,4 +1,4 @@
-//  multi state change => yaniy bitta funtion orqali ikkita inputni yurgizishga multi state change deb aytiladi.
+//  multi state change => yaniy bitta funtion orqali ikkita yoki undan kop inputni malumotini olishga multi state change deb aytiladi.
 /*
   render() {
         const OnName = (e) => {
@@ -16,8 +16,8 @@
             </div>
         )
     }  biz bu xolatda bitta yoki ikkita inputni olishimiz mumkun lekin keyinchalik 
-    inputlar kopayib keishi mumkun. Shuni bitta functionga  yozishimiz uchun
-
+    inputlar kopayib keishi mumkun. Shuni bitta functionga  yozishimiz kerak
+    
         render() {
         const onChange = (e) => {
             const {value, name} = e.target

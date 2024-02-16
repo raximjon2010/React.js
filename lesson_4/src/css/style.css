@@ -110,7 +110,7 @@ body {
   gap: 7px;
 }
 
-.input {
+.input1, .input {
   height: 30px;
   border: none;
   border-bottom: 1px solid white;
@@ -123,12 +123,26 @@ body {
   letter-spacing: 0.5%;
 }
 
+.input1 {
+  background: white;
+  border-bottom: 1px solid red;
+  color: black;
+}
+
+.input1::-moz-placeholder {
+  color: black;
+}
+
+.input1::placeholder {
+  color: black;
+}
+
 .input::-moz-placeholder {
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
   letter-spacing: 0.5%;
-  color: white;
+  color: rgb(172, 129, 129);
 }
 
 .input::placeholder {
@@ -136,7 +150,7 @@ body {
   font-weight: 500;
   line-height: 20px;
   letter-spacing: 0.5%;
-  color: white;
+  color: rgb(172, 129, 129);
 }
 
 .Button {

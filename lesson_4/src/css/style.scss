@@ -116,12 +116,23 @@ body {
 .input {
     @extend %Create;
 }
+.input1{
+    @extend %Create;
+    background: white;
+    border-bottom: 1px solid red;
+    color: black;
+}
+.input1::placeholder{
+    color: black;
+}
+
+
 .input::placeholder{
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
     letter-spacing: 0.5%;
-    color: white;
+    color: rgb(172, 129, 129);
 }
 .Button{
     width: 50px;
