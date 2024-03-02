@@ -29,7 +29,7 @@
 // babel o'rtada qanaqadir ishlar bajaradi va keyin uni callstactda korsatadi. Viteda babel yuq shuning uchun
 // ham vite tez ishlaydi.
 
-//  scr => buni ichida main degan fayl bor. Buni ichiga hamma componmentslar kelib joylashdi. Va manashu componentlar 
+//  src => buni ichida main degan fayl bor. Buni ichiga hamma componmentslar kelib joylashdi. Va manashu componentlar 
 //  index.html faylidagi 'div' ni ichiga borib joylashadi. Endi manashuni ichiga componentlar kelib joylashadi
 //  va buni index.html fayliga yuboradi Keyin uni callstack da korsatadi.
 
@@ -50,7 +50,7 @@
 
 // ==============================================================
 // Vite haqida 
-// Vite. js - bu tezkor va engil qurish vositasi bo'lib, u front-end dasturchilarga zamonaviy
+// Vite.js - bu tezkor va engil qurish vositasi bo'lib, u front-end dasturchilarga zamonaviy
 //  veb-ilovalarni tez va samarali tarzda yaratishga yordam berish uchun ishlab chiqilgan. Zamonaviy 
 // arxitekturasi bilan Vite. js React ilovalaringizni har qachongidan ham tezroq yaratish va rivojlantirishga yordam beradi.
 

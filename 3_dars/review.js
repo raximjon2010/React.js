@@ -9,6 +9,7 @@
 
 // state => 
 /*
+
 let title = "Webbrain";
 const Onchange = (event) => {
     title = event.target.value
@@ -45,10 +46,8 @@ constructor(props) {
     // setState => bu this.state qilingan vaqtda this desak avtomatik tarzda setState kelib chiqadi. uni biz {}
     object ichida malumotni yangilash mumkun.
 
-
     Agar biz renderdan yuqorida function yozsak uni this orqali olish mumkun.
 
-
-    state => re-render qilish xususiyatiga ega bolgan oddiy bitta state.
+    state => re-render qilish xususiyatiga ega bolgan oddiy bitta function;
 
 */

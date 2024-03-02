@@ -1,4 +1,4 @@
-// Components => Biz buni Javscriptda functionlarda korsak. Functionni xususiyatlaridan bir biz uni 
+// Components => Biz buni Javscriptda functionlarda korsak. Functionni xususiyatlaridan biri biz uni 
 // ichidagi malumotlarini qayta ishlatishimiz mumkun. Va uni har doim chaqirgan vaqtda unga parametr berib 
 // yozishimiz mumkun. 
 // Endi huddi shuni Reactda korsak: Componetslarni qayta ishlatishimz mumkun Componentslar class ham function 
@@ -8,4 +8,4 @@
 
 // Prop nima?
 
-// Props Children => 
+// Props Children =>

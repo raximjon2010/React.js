@@ -41,7 +41,7 @@ render() {
         }
         const Onchange = (e) => {
             const {value, name} = e.target;
-            let search = data.filter((item) => `${item[this.state.select]}`.toUpperCase().toUpperCase().includes(value.toUpperCase().toUpperCase()))
+            let search = data.filter((item) => `${item[this.state.select]}`.toUpperCase().toLowerCase().includes(value.toUpperCase().toLowerCase()))
             this.setState({list: search}) 
         }
 

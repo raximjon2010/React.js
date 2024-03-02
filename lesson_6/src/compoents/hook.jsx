@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react"
 
-const Hook = (props) => {
+const Hook = () => {
     const [count, setCount] = useState(0);
 
     // useEffect((() => {
@@ -46,3 +46,5 @@ export default Hook
 
 // useState => Bu huddi statega oxshaydi faqat buni functioni ozimiz nomini 
 // yozamiz va bu array oladi state esa object edi.
+
+// useEffect => bu state ozgargan yoki ozgarmaganligini tekshirish uchun ishlatiladi
