@@ -10,6 +10,9 @@ export const Param2 = (state, action) => {
         const {key, qiymat} = action.payload
         let res = data.filter((value) => `${value[key]}`.includes(qiymat));
         return res
+        case 'active' : 
+        const {view, setview} = action.payload;
+        return setview(!view)
         default : state
     }
 }

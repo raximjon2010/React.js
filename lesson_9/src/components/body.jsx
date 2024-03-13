@@ -4,33 +4,31 @@ import { Student } from "../context/Sudent";
 
 const Body = ()=> {
     let link = 'https://jsonplaceholder.typicode.com';
-    // const [data, dispatch] = useContext(Student)
-    // const refId = useRef(null)
-    // const refTitle = useRef('')
+    const [data, dispatch] = useContext(Student)
+    const refId = useRef(null)
+    const refTitle = useRef('')
     const [datas, setData] = useState([])
     const [getData, setGetdata] = useState()
+    const [view, setview] = useState(false)
     useEffect(() => {
         fetch(`${link}/users`)
         .then((res) => res.json())
         .then((res) => setData(res));
     },[])
-    
-    // const onSearch = () => {
-        //     dispatch({type: 'fillter', payload: {key: 'name', qiymat: refTitle.current.value}})
-        // }
+    const onSearch = () => {
+            dispatch({type: 'fillter', payload: {key: 'name', qiymat: refTitle.current.value}})
+        }
         const onSelect = (id) => {
-        useEffect(() => {
-            fetch(`${link}/users`)
+            fetch(`${link}/users/${id}`)
             .then((res) => res.json())
-            .then((res) => console.log(res));
-        },[])
+            .then((res) => setGetdata(res));
     }
     return (
         <div style={{display: 'flex', justifyContent: 'space-around'}}>
         <div>
-            {/* <input ref={refId}  type="text" placeholder="id"/> */}
-            {/* <input  ref={refTitle} type="text" placeholder="name"/> */}
-            {/* <button onClick={onSearch}>search</button> */}
+            <input ref={refId}  type="text" placeholder="id"/> 
+            <input  ref={refTitle} type="text" placeholder="name"/>
+            <button onClick={onSearch}>search</button>
             {
                datas.map((value) => {
                 return (
@@ -42,9 +40,17 @@ const Body = ()=> {
             }
             </div>
             <div>
-                <h2>ID{getData?.id}</h2>
-                <h2>NAME{getData?.name}</h2>
-                <h2>EMAIL{getData?.email}</h2>
+                <h2>ID: {getData?.id}</h2>
+                <h2>NAME: {getData?.name}</h2>
+                <h2>EMAIL: {getData?.email}</h2>
+            </div>
+            <div>
+                <button onClick={() => dispatch({type: 'active', payload: {view, setview}})}>{view ? 'Malumotlar yashirish' : 'Malumotlar korsatish'}</button>
+                {
+                    view ?
+                  'All data 0' 
+                  : 'Malumotlar yashirilgan'
+                }
             </div>
         </div>
     );
@@ -53,7 +59,7 @@ const Body = ()=> {
 export default Body;
 
 
-//   controlled an un controlled => bu masalan bizda ikkita input bor 
+//   controlled an uncontrolled => bu masalan bizda ikkita input bor 
 // shuni ichiga malumot u har doim ekranni re-render qiladi shuning 
 // oldini olsih uchun biz useRef() ishlatamiz. Biz  useRefdagi qiymatni 
 // ozgartirsak u qayta korsatmaydi useState esa korsatadi.
