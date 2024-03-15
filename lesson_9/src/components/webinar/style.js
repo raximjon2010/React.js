@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 export const Container = styled.div`
 width: 100%;
@@ -6,8 +7,9 @@ height: 100vh;
 display: flex;
 justify-content: center;
 align-items: center;
+
 `
-export const Wrapper = styled.div`
+export const Wrapper = styled(NavLink)`
 width: 500px;
 height: 600px;
 border: 1px solid gray;
@@ -17,6 +19,7 @@ justify-content: center;
 flex-direction: column;
 gap: 30px;
 align-items: center;
+text-decoration: none;
 `
 export const Title = styled.div`
 font-size: 24px;

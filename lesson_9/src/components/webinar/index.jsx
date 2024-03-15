@@ -1,6 +1,8 @@
-import { useState } from "react";
-import { Button, Container, Input, Inputs, Level, Levels, Select, Texts, Title, Tulov, Wrapper } from "./style";
+import { useEffect, useState } from "react";
+import { Container, Input, Inputs, Level, Levels, Select, Texts, Title, Tulov, Wrapper } from "./style";
 import Payment from "./payment";
+import {Route, Routes, useNavigate} from 'react-router-dom';
+import Main from "./main";
 
 const BaseUrl = 'https://sheet.best/api/sheets/6114b434-52e1-4adf-b147-59da0a290b3f'
 
@@ -9,9 +11,9 @@ const Index = (index) => {
     const [title,setName] = useState('');
     const [number,setNumber] = useState('');
     const [selecte, setSelect] = useState('Javascript');
-    const [isActive, setIsactive] = useState(false)
     const [saveSelect, setsaveSelect] = useState('')
     const [Files, setFiles] = useState(null);
+    const navigate = useNavigate();
 
     const onFile = (e) => {
         const selectedFile = e.target?.files[0];
@@ -58,7 +60,6 @@ const Index = (index) => {
         }
         else {
             PostData()
-            setIsactive(true)
             if (selecte == 'Javascript') {
                 setsaveSelect('500 000 ming')
             }
@@ -74,10 +75,10 @@ const Index = (index) => {
             else {
                 setsaveSelect('hech nima')
             }
+            navigate("/payment");
         }
     }
     const Back =() => {
-        setIsactive(false)
     }
     const ContinueButton = () => {
         if (!Files) {
@@ -101,35 +102,16 @@ const Index = (index) => {
                 },
                 body: JSON.stringify(body)
             })
+    navigate('/')
         }
     }
     return (
         
-        <Container>
-{
-            isActive === false ? 
-           <Wrapper>
-                <Title>Webbrain Academy</Title>
-                <Levels>
-                    <Level color = 'true'>1</Level>
-                    <Level>2</Level>
-                    <Level>3</Level>
-                    </Levels>
-                <Inputs>
-                <Input onChange={(e) => setName(e.target.value)} type="name" placeholder="name"/>
-                <Input maxLength={9}  onChange={(e) => setNumber(e.target.value)} type="number" placeholder="number" />
-                </Inputs>
-                <Select onChange={onSelect} name="" id="">
-                <option value="Javascript">Javascript</option>
-                <option value="React">React</option>
-                <option value="Bootcamp">Bootcamp</option>
-                <option value="HTML CSS">HTML & CSS</option>
-                </Select>
-                <Button onClick={CLickButton}>Tayyor</Button>
-                </Wrapper>
-                :
-                <Payment Back = {Back} continueButton = {ContinueButton} saveSelect = {saveSelect} selecte = {selecte} OnFile = {onFile}/>  
-}
+        <Container >
+                <Routes>
+           <Route  path = {'/'} element = {<Main setName = {setName} setNumber = {setNumber} onSelect = {onSelect} CLickButton = {CLickButton}/>}/>
+           <Route  path="/payment" element = { <Payment Back = {Back} continueButton = {ContinueButton} saveSelect = {saveSelect} selecte = {selecte} OnFile = {onFile}/>}/>   
+               </Routes>
                 </Container>
     );
 }

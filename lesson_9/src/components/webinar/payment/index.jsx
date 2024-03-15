@@ -1,10 +1,11 @@
 
+import { Outlet } from "react-router-dom";
 import { Button, Container, Inputs, Level, Levels, Texts, Title, Tulov, Wrapper } from "../style";
 
 const Payment = ({Back, continueButton, saveSelect, selecte, OnFile}) => {
     return (
         <Container>
-            <Wrapper>
+            <Wrapper to={'/payment'}>
                 <Texts onClick={Back}>Tahirlash</Texts>
                 <Title>Webbrain Academy</Title>
                 <Texts>Tarif:{selecte}</Texts>
@@ -25,6 +26,7 @@ const Payment = ({Back, continueButton, saveSelect, selecte, OnFile}) => {
                 </Tulov>
                 <Button onClick = {continueButton}>Keyingi</Button>
                 </Wrapper>
+                <Outlet/>
         </Container>
     );
 }
