@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
-import { Container, Input, Inputs, Level, Levels, Select, Texts, Title, Tulov, Wrapper } from "./style";
+import { useState } from "react";
+import { Container, Image,} from "./style";
 import Payment from "./payment";
-import {Route, Routes, useNavigate} from 'react-router-dom';
+import {Navigate, Route, Routes, useNavigate} from 'react-router-dom';
 import Main from "./main";
+import bg from '../../assets/orqafon.png';
+import Done from "./done";
 
-const BaseUrl = 'https://sheet.best/api/sheets/6114b434-52e1-4adf-b147-59da0a290b3f'
-
+const BaseUrl = 'https://sheet.best/api/sheets/6114b434-52e1-4adf-b147-59da0a290b3f';
 
 const Index = (index) => {
     const [title,setName] = useState('');
@@ -73,10 +74,10 @@ const Index = (index) => {
                 setsaveSelect('300 000 ming')
             }
             else {
-                setsaveSelect('hech nima')
+                setsaveSelect('')
             }
-            navigate("/payment");
-        }
+            navigate('payment');
+        };
     }
     const Back =() => {
     }
@@ -102,15 +103,16 @@ const Index = (index) => {
                 },
                 body: JSON.stringify(body)
             })
-    navigate('/')
         }
     }
     return (
-        
-        <Container >
+        <Container>
+            <Image src = {bg} />
                 <Routes>
-           <Route  path = {'/'} element = {<Main setName = {setName} setNumber = {setNumber} onSelect = {onSelect} CLickButton = {CLickButton}/>}/>
+           <Route exact path = {'/'} element = {<Main setName = {setName} setNumber = {setNumber} onSelect = {onSelect} CLickButton = {CLickButton}/>}/>
            <Route  path="/payment" element = { <Payment Back = {Back} continueButton = {ContinueButton} saveSelect = {saveSelect} selecte = {selecte} OnFile = {onFile}/>}/>   
+           <Route  path="/done" element = {<Done kurs = {selecte} title = {title} number = {number}/>}/>;   
+           <Route path="*" element = {<Navigate to={'/'}/>}/>
                </Routes>
                 </Container>
     );

@@ -1,21 +1,26 @@
 
 import { Outlet } from "react-router-dom";
-import { Button, Container, Inputs, Level, Levels, Texts, Title, Tulov, Wrapper } from "../style";
+import arrow from '../../../assets/Arrow.svg';
+import { Button, Container, Icon, Inputs, Level, Levels, Texts, Title, Tulov, Wrapper } from "../style";
+import { useState } from "react";
 
 const Payment = ({Back, continueButton, saveSelect, selecte, OnFile}) => {
+    const [active, setActive] = useState(false)
     return (
-        <Container>
-            <Wrapper to={'/payment'}>
-                <Texts onClick={Back}>Tahirlash</Texts>
+        <Container to={'/payment'}>
+            <Wrapper>
                 <Title>Webbrain Academy</Title>
-                <Texts>Tarif:{selecte}</Texts>
+                <Texts>Tarif: {selecte}</Texts>
                 <Levels>
                 <Level color = 'true'>1</Level>
                 <Level color = 'true'>2</Level>
                 <Level>3</Level>
                 </Levels>
                 <Tulov>
-                <Texts tulov = 'true'>Bank kartasiga tulov</Texts>
+                <Texts onClick={() => setActive(!active)} tulov = 'true'>Bank kartasiga tulov <Icon rotate = {active} src={arrow} alt="eror"/></Texts>
+                {
+                active ?
+                <div>
                 <Texts>{saveSelect}</Texts>
                 <Inputs>
                 <Texts>8600 1404 3622 1478</Texts>
@@ -23,7 +28,11 @@ const Payment = ({Back, continueButton, saveSelect, selecte, OnFile}) => {
                 <Texts>Chekni yuklang</Texts>
                 <input onChange={OnFile} type="file" placeholder="Chekni yuklang"/>
                 </Inputs>
-                </Tulov>
+                </div>
+                : 
+                ''
+            }
+            </Tulov>
                 <Button onClick = {continueButton}>Keyingi</Button>
                 </Wrapper>
                 <Outlet/>

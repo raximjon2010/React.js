@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './root/App.jsx'
 import StudentProvider from './context/Sudent.jsx'
 import { BrowserRouter } from 'react-router-dom'
+import './inde.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
